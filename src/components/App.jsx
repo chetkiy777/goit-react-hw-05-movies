@@ -1,11 +1,10 @@
-import { Switch, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import AppBar from './AppBar/AppBar';
 
 export const App = () => {
   return (
     <div>
-      <Switch>
-        <Route></Route>
-      </Switch>
+      <AppBar />
     </div>
   );
 };
