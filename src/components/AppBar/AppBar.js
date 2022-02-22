@@ -1,10 +1,11 @@
-import { NavLink } from 'react-router-dom';
+import Navigation from 'components/Navigation/Navigation';
+import styles from './styles.modules.css';
 
 const AppBar = () => {
   return (
-    <div>
-      <NavLink to="/">Главная</NavLink>
-    </div>
+    <header className={styles.header}>
+      <Navigation />
+    </header>
   );
 };
 
