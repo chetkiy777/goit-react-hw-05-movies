@@ -1,4 +1,4 @@
-import Navigation from 'components/Navigation/Navigation';
+import Navigation from '../Navigation/Navigation';
 import styles from './styles.modules.css';
 
 const AppBar = () => {

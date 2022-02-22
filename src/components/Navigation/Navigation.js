@@ -4,8 +4,12 @@ import styles from './styles.module.css';
 const Navigation = () => {
   return (
     <nav>
-      <NavLink to="/">Главная</NavLink>
-      <NavLink to="/movies">Фильмы</NavLink>
+      <NavLink to="/" className={styles.link}>
+        Главная
+      </NavLink>
+      <NavLink exact="true" to="movies" className={styles.link}>
+        Фильмы
+      </NavLink>
     </nav>
   );
 };

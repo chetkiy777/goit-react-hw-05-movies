@@ -1,0 +1,13 @@
+.link {
+  text-decoration: none;
+  color: inherit;
+  display: inline-block;
+  margin-left: 10px;
+  color: #000;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.activeLink {
+  color: blue;
+}
