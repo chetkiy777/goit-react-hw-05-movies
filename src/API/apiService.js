@@ -47,7 +47,7 @@ export class ApiService {
   async getFilmDetails(id) {
     return instance
       .get(`/movie/${id}?api_key=${this._apiKey}`)
-      .then(response => response.data.results)
+      .then(response => response.data)
       .catch(error => console.log(error));
   }
 

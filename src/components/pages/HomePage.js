@@ -1,8 +1,7 @@
 import styles from './styles.module.css';
 import { useEffect, useState } from 'react';
-import MovieDetailsPage from './MovieDetailsPage';
 import { ApiService } from './../../API/apiService';
-import { Link } from 'react-router-dom';
+import { Link, useMatch } from 'react-router-dom';
 const apiService = new ApiService();
 
 const HomePage = () => {

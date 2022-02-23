@@ -1,20 +1,27 @@
-import { Routes, Route } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Routes, Route, useParams } from 'react-router-dom';
+import { ApiService } from 'API/apiService';
 import Cast from './Cast';
 import Reviews from './Reviews';
+const apiService = new ApiService();
 
-const MovieDetailsPage = ({ film }) => {
+const MovieDetailsPage = () => {
+  const [filmInfo, setFilmInfo] = useState();
+
+  const { movieId } = useParams();
+
+  useEffect(() => {
+    apiService.getFilmDetails(Number(movieId)).then(setFilmInfo);
+  }, [movieId]);
+
   return (
     <div>
-      <h1>Movie Title</h1>
-
-      <h2>Overview:</h2>
-
-      <p>Lorem ipsum dolor sit amet consectetur</p>
-
-      <Routes>
-        <Route path={`/movies/:movieId/cast`} element={<Cast />} />
-        <Route path={`/movies/:movieId/reviews`} element={<Reviews />} />
-      </Routes>
+      {filmInfo && (
+        <div>
+          <h1>{filmInfo.original_title}</h1>
+          <p>Overview: {filmInfo.overview}</p>
+        </div>
+      )}
     </div>
   );
 };
