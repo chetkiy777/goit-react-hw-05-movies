@@ -1,7 +1,8 @@
+import styles from './styles.module.css';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import MovieDetailsPage from './MovieDetailsPage';
 import { ApiService } from './../../API/apiService';
+import { Link } from 'react-router-dom';
 const apiService = new ApiService();
 
 const HomePage = () => {
@@ -17,7 +18,11 @@ const HomePage = () => {
       <ul>
         {trendingFilms &&
           trendingFilms.map(film => (
-            <li key={film.id}>{film.title ?? 'NoName'}</li>
+            <li key={film.id}>
+              <Link to="/details" className={styles.link}>
+                {film.title ?? film.name}
+              </Link>
+            </li>
           ))}
       </ul>
     </div>

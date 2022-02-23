@@ -5,6 +5,7 @@ const AppBar = () => {
   return (
     <header className={styles.header}>
       <Navigation />
+      <hr />
     </header>
   );
 };
