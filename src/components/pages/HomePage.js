@@ -19,7 +19,7 @@ const HomePage = () => {
         {trendingFilms &&
           trendingFilms.map(film => (
             <li key={film.id}>
-              <Link to="/details" className={styles.link}>
+              <Link to={`/movie/${film.id}`} className={styles.link}>
                 {film.title ?? film.name}
               </Link>
             </li>

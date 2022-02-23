@@ -10,7 +10,6 @@ export const App = () => {
       <AppBar />
       <Routes>
         <Route path="/" exact="true" element={<HomePage />} />
-
         <Route path="/movies" exact="true" element={<MoviesPage />} />
       </Routes>
     </Container>
