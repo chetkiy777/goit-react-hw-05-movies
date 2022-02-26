@@ -1,2 +1,51 @@
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+p,
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+
+p,
+h2 {
+  margin-bottom: 15px;
+}
+
+.thumb {
+  width: 200px;
+}
+
 .searchInput {
+}
+
+.filmInfo {
+  display: flex;
+}
+
+.aboutFilm {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+}
+
+.overview {
+}
+
+.additionalInfo {
+  border-top: 2px solid grey;
+  margin-top: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.castLink {
+  margin-bottom: 10px;
 }
