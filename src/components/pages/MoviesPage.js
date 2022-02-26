@@ -1,8 +1,13 @@
 import { useState } from 'react';
 import styles from './styles.module.css';
+import { ApiService } from 'API/apiService';
+import Container from 'components/Container/Container';
+import { Link } from 'react-router-dom';
+const apiService = new ApiService();
 
 const MoviesPage = () => {
   const [inputQuery, setInputQuery] = useState('');
+  const [findedArr, setFindedArr] = useState(null);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -10,19 +15,33 @@ const MoviesPage = () => {
       return;
     }
 
-    console.log(inputQuery);
+    apiService.searchQuery = inputQuery;
+
+    apiService.getFilmByName().then(setFindedArr);
   };
 
   return (
-    <form action="/" onSubmit={handleSubmit}>
-      <input
-        name="searchInput"
-        className={styles.searchInput}
-        value={inputQuery}
-        onChange={e => setInputQuery(e.currentTarget.value)}
-      />
-      <button type="submit">Search</button>
-    </form>
+    <div>
+      <form action="/" onSubmit={handleSubmit}>
+        <input
+          name="searchInput"
+          className={styles.searchInput}
+          value={inputQuery}
+          onChange={e => setInputQuery(e.currentTarget.value)}
+        />
+        <button type="submit">Search</button>
+      </form>
+      <ul>
+        {findedArr &&
+          findedArr.map(film => {
+            return (
+              <li key={film.id}>
+                <Link to={`/movie/${film.id}`}>{film.title ?? film.name}</Link>
+              </li>
+            );
+          })}
+      </ul>
+    </div>
   );
 };
 
