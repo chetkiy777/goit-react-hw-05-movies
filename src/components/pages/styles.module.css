@@ -38,12 +38,12 @@ h2 {
 }
 
 .additionalInfo {
+  display: flex;
+  flex-direction: column;
   border-top: 2px solid grey;
   margin-top: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
-  display: flex;
-  flex-direction: column;
 }
 
 .castLink {

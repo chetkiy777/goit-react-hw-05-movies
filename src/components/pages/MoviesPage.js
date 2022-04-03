@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import styles from './styles.module.css';
 import { ApiService } from 'API/apiService';
-import Container from 'components/Container/Container';
 import { Link } from 'react-router-dom';
 const apiService = new ApiService();
 

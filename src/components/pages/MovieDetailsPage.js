@@ -1,9 +1,7 @@
 import style from './styles.module.css';
 import { useEffect, useState } from 'react';
-import { Routes, Route, useParams, Link, useMatch } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { ApiService } from 'API/apiService';
-import Cast from './Cast';
-import Reviews from './Reviews';
 import Container from 'components/Container/Container';
 const apiService = new ApiService();
 
@@ -14,7 +12,7 @@ const MovieDetailsPage = () => {
 
   useEffect(() => {
     apiService.getFilmDetails(Number(movieId)).then(setFilmInfo);
-  }, [movieId]);
+  }, [movieId])
 
   return (
     <Container>
@@ -30,38 +28,39 @@ const MovieDetailsPage = () => {
           <div className={style.aboutFilm}>
             <h2>{filmInfo.original_title}</h2>
             <p>User score: 74%</p>
-            <p className={style.overview}>
+            <div className={style.overview}>
               <p>
                 <b>Overview: </b>
               </p>
               <p>{filmInfo.overview}</p>
-            </p>
+            </div>
 
-            <p>
-              <p>
-                <b>Genres:</b>
-              </p>
-              Action
-            </p>
+            <div>
+              <p><b>Genres:</b></p>
+              <p>Action</p>
+            </div>
+
+            <div className={style.additionalInfo}>
+              <span>Additional Info</span>
+
+              <ul>
+                <li className={style.castLink}>
+                  <Link exact="true" to={`/movie/${movieId}/credits`}>
+                    Cast
+                  </Link>
+                </li>
+                <li>
+                  <Link exact="true" to={`/movie/${movieId}/reviews`}>
+                    Review
+                  </Link>
+                </li>
+              </ul>
+
+            </div>
+
           </div>
-        </div>
+        </div>          
       )}
-      <div className={style.additionalInfo}>
-        <span>Additional Info</span>
-
-        <ul>
-          <li className={style.castLink}>
-            <Link exact="true" to={`/credits`}>
-              Cast
-            </Link>
-          </li>
-          <li>
-            <Link exact="true" to={`/reviews`}>
-              Review
-            </Link>
-          </li>
-        </ul>
-      </div>
     </Container>
   );
 };
