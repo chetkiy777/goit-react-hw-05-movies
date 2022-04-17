@@ -1,11 +1,12 @@
 import style from './styles.module.css';
 import { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, Outlet } from 'react-router-dom';
 import { ApiService } from 'API/apiService';
-import Container from 'components/Container/Container';
+import { Container } from 'components/App.styled';
+
 const apiService = new ApiService();
 
-const MovieDetailsPage = () => {
+const MovieDetailsPage = ({setReviews, setActors}) => {
   const [filmInfo, setFilmInfo] = useState(null);
 
   const { movieId } = useParams();
@@ -13,6 +14,14 @@ const MovieDetailsPage = () => {
   useEffect(() => {
     apiService.getFilmDetails(Number(movieId)).then(setFilmInfo);
   }, [movieId])
+
+    useEffect(() => {
+    apiService.getFilmActors(Number(movieId)).then(setActors);
+  }, [movieId, setActors])
+
+    useEffect(() => {
+    apiService.getFilmReviews(Number(movieId)).then(setReviews);
+  }, [movieId, setReviews])
 
   return (
     <Container>
@@ -37,7 +46,7 @@ const MovieDetailsPage = () => {
 
             <div>
               <p><b>Genres:</b></p>
-              <p>Action</p>
+              {filmInfo.genres.map(genre => <span key={genre.id}> {genre.name} </span>)}
             </div>
 
             <div className={style.additionalInfo}>
@@ -45,18 +54,16 @@ const MovieDetailsPage = () => {
 
               <ul>
                 <li className={style.castLink}>
-                  <Link exact="true" to={`/movie/${movieId}/credits`}>
-                    Cast
-                  </Link>
+                  <Link to="cast">Cast</Link>
                 </li>
                 <li>
-                  <Link exact="true" to={`/movie/${movieId}/reviews`}>
-                    Review
-                  </Link>
+                  <Link to="reviews">Reviews</Link>
                 </li>
               </ul>
 
             </div>
+
+            <Outlet/>
 
           </div>
         </div>          

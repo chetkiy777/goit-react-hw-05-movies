@@ -49,17 +49,17 @@ export class ApiService {
       .catch(error => console.log(error));
   }
 
-  async getFilmAuthors(id) {
+  async getFilmReviews(id) {
     return await instance
-      .get(`/movie/${id}/credits`)
+      .get(`/movie/${id}/reviews?api_key=${this._apiKey}`)
       .then(response => response.data.results)
       .catch(error => console.log(error));
   }
 
-  async getFilmReviews(id) {
+  async getFilmActors(id) {
     return await instance
-      .get(`/movie/${id}/reviews`)
-      .then(response => response.data.results)
+      .get(`/movie/${id}/credits?api_key=${this._apiKey}`)
+      .then(response => response.data.cast)
       .catch(error => console.log(error));
   }
 }

@@ -1,23 +1,31 @@
-import { Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import AppBar from 'components/AppBar/AppBar';
 import HomePage from 'components/pages/HomePage';
 import MoviesPage from 'components/pages/MoviesPage';
-import Container from './Container/Container';
+import { Container } from './App.styled';
 import MovieDetailsPage from './pages/MovieDetailsPage';
 import Cast from './pages/Cast';
 import Reviews from './pages/Reviews';
+import { useState } from 'react';
 
 export const App = () => {
+
+  const [actors, setActors] = useState(null)
+  const [reviews, setReviews] = useState(null)
+
   return (
-    <Container>
-      <AppBar />
-      <Routes>
-        <Route path="/" exact="true" element={<HomePage />} />
-        <Route path="/movies" exact="true" element={<MoviesPage />} />
-        <Route path="/movie/:movieId" element={<MovieDetailsPage />} />
-        <Route path="/movie/:movieId/credits" element={<Cast />} />
-        <Route path="/movie/:movieId/reviews" element={<Reviews />} />
-      </Routes>
-    </Container>
+    <BrowserRouter>
+      <Container>
+        <AppBar />
+        <Routes>
+          <Route path="/" exact="true" element={<HomePage />} />
+          <Route path="/movies" element={<MoviesPage />} />
+          <Route path="/movie/:movieId/*" element={<MovieDetailsPage setActors={setActors} setReviews={setReviews}/>}>
+            <Route path="cast" element={<Cast actors={actors}/>} />
+            <Route path="reviews" element={<Reviews reviews={reviews}/>} />
+          </Route>
+        </Routes>
+      </Container>
+    </BrowserRouter>
   );
 };
