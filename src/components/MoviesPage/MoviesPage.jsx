@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import styles from './styles.module.css';
 import { ApiService } from 'API/apiService';
 import { Link } from 'react-router-dom';
 const apiService = new ApiService();
@@ -24,7 +23,6 @@ const MoviesPage = () => {
       <form action="/" onSubmit={handleSubmit}>
         <input
           name="searchInput"
-          className={styles.searchInput}
           value={inputQuery}
           onChange={e => setInputQuery(e.currentTarget.value)}
         />

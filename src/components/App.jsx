@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import AppBar from 'components/AppBar/AppBar';
 import HomePage from 'components/pages/HomePage';
-import MoviesPage from 'components/pages/MoviesPage';
+import MoviesPage from 'components/MoviesPage/MoviesPage';
 import { Container } from './App.styled';
 import MovieDetailsPage from './pages/MovieDetailsPage';
 import Cast from './pages/Cast';

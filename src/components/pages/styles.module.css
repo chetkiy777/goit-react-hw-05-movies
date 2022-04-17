@@ -17,35 +17,3 @@ h2 {
   margin-bottom: 15px;
 }
 
-.thumb {
-  width: 200px;
-}
-
-.searchInput {
-}
-
-.filmInfo {
-  display: flex;
-}
-
-.aboutFilm {
-  display: flex;
-  flex-direction: column;
-  margin-left: 20px;
-}
-
-.overview {
-}
-
-.additionalInfo {
-  display: flex;
-  flex-direction: column;
-  border-top: 2px solid grey;
-  /* margin-top: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px; */
-}
-
-.castLink {
-  margin-bottom: 10px;
-}

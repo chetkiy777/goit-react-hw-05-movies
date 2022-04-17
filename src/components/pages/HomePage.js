@@ -1,4 +1,3 @@
-import styles from './styles.module.css';
 import { useEffect, useState } from 'react';
 import { ApiService } from './../../API/apiService';
 import { Link } from 'react-router-dom';
