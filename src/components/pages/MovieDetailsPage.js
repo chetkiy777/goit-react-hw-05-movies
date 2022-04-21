@@ -1,8 +1,7 @@
-import style from './styles.module.css';
 import { useEffect, useState } from 'react';
 import { useParams, Link, Outlet } from 'react-router-dom';
 import { ApiService } from 'API/apiService';
-import { Container, MainInfoBlock, AdditionalInfoBlock, AboutFilmInfo } from 'components/pages/Pages.styled';
+import { Container, MainInfoBlock, AdditionalInfoBlock, AboutFilmInfo, MovieListItem, BlockTitle } from 'components/pages/Pages.styled';
 
 const apiService = new ApiService();
 
@@ -42,14 +41,12 @@ const MovieDetailsPage = ({setReviews, setActors}) => {
             <p>User score: 74%</p>
 
             <div>
-              <p>
-                <b>Overview: </b>
-              </p>
+              <BlockTitle>Overview:</BlockTitle>
               <p>{filmInfo.overview}</p>
             </div>
 
             <div>
-              <p><b>Genres:</b></p>
+              <BlockTitle>Genres:</BlockTitle>
               {filmInfo.genres.map(genre => <span key={genre.id}> {genre.name} </span>)}
             </div>
           </AboutFilmInfo>
@@ -59,12 +56,12 @@ const MovieDetailsPage = ({setReviews, setActors}) => {
           <span>Additional Info</span>
 
           <ul>
-            <li>
+            <MovieListItem>
               <Link to="cast">Cast</Link>
-            </li>
-            <li>
+            </MovieListItem>
+            <MovieListItem>
               <Link to="reviews">Reviews</Link>
-            </li>
+            </MovieListItem>
           </ul>
 
         </AdditionalInfoBlock>

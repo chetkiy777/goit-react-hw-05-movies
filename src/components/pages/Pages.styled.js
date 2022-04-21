@@ -12,6 +12,21 @@ export const Container = styled.div`
 
 `
 
+export const ImageThumb = styled.div`
+  display: block;
+  width: 120px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  img {
+    display: block;
+    width: 100%;
+  }
+`
+
+export const BlockTitle = styled.p`
+  font-weight: bold;
+`
+
 export const MainInfoBlock = styled.div`
     display: flex;
     flex-direction: row;
@@ -37,6 +52,11 @@ export const AboutFilmInfo = styled.div`
   display: flex;
   flex-direction: column;
   margin-left: 20px;
-    
+  margin-bottom: 10px;
 `
+
+export const MovieListItem = styled.li`
+  margin-top: 10px;
+`
+
 
