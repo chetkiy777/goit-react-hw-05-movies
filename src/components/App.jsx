@@ -6,19 +6,26 @@ import { Container } from './App.styled';
 import MovieDetailsPage from './pages/MovieDetailsPage';
 import Cast from './pages/Cast';
 import Reviews from './pages/Reviews';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { ApiService } from './../API/apiService';
+const apiService = new ApiService();
 
 export const App = () => {
 
   const [actors, setActors] = useState(null)
   const [reviews, setReviews] = useState(null)
+  const [trendingFilms, setTrendingFilms] = useState(null);
+
+  useEffect(() => {
+    apiService.getTrendingFilms().then(setTrendingFilms);
+  }, []);
 
   return (
     <BrowserRouter>
       <Container>
         <AppBar />
-        <Routes>
-          <Route path="/" index element={<HomePage />} />
+        <Routes> 
+          <Route path="*" element={<HomePage trendingFilms={trendingFilms}/>} />
           <Route path="/movies" element={<MoviesPage />} />
           <Route path="/movie/:movieId/*" element={<MovieDetailsPage setActors={setActors} setReviews={setReviews}/>}>
             <Route path="cast" element={<Cast actors={actors}/>} />
@@ -29,3 +36,4 @@ export const App = () => {
     </BrowserRouter>
   );
 };
+ 

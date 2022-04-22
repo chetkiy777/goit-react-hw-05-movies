@@ -1,14 +1,7 @@
-import { useEffect, useState } from 'react';
-import { ApiService } from './../../API/apiService';
 import { Link } from 'react-router-dom';
-const apiService = new ApiService();
 
-const HomePage = () => {
-  const [trendingFilms, setTrendingFilms] = useState(null);
 
-  useEffect(() => {
-    apiService.getTrendingFilms().then(setTrendingFilms);
-  }, []);
+const HomePage = ({trendingFilms}) => {
 
   return (
     <div>
