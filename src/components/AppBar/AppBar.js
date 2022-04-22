@@ -1,5 +1,6 @@
 import Navigation from '../Navigation/Navigation';
 import styles from './styles.modules.css';
+import HomePage from 'components/pages/HomePage';
 
 const AppBar = () => {
   return (

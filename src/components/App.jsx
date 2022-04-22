@@ -18,7 +18,7 @@ export const App = () => {
       <Container>
         <AppBar />
         <Routes>
-          <Route path="/" exact="true" element={<HomePage />} />
+          <Route path="/" index element={<HomePage />} />
           <Route path="/movies" element={<MoviesPage />} />
           <Route path="/movie/:movieId/*" element={<MovieDetailsPage setActors={setActors} setReviews={setReviews}/>}>
             <Route path="cast" element={<Cast actors={actors}/>} />
