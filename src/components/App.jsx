@@ -25,7 +25,7 @@ export const App = () => {
       <Container>
         <AppBar />
         <Routes> 
-          <Route path="*" element={<HomePage trendingFilms={trendingFilms}/>} />
+          <Route index element={<HomePage trendingFilms={trendingFilms}/>} />
           <Route path="/movies" element={<MoviesPage />} />
           <Route path="/movie/:movieId/*" element={<MovieDetailsPage setActors={setActors} setReviews={setReviews}/>}>
             <Route path="cast" element={<Cast actors={actors}/>} />
