@@ -1,7 +1,16 @@
+import {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import { ApiService } from 'API/apiService';
+const apiService = new ApiService();
 
+const HomePage = () => {
 
-const HomePage = ({trendingFilms}) => {
+  const [trendingFilms, setTrendingFilms] = useState(null);
+    
+
+  useEffect(() => {
+    apiService.getTrendingFilms().then(setTrendingFilms);
+  }, []);
 
   return (
     <div>
@@ -10,7 +19,7 @@ const HomePage = ({trendingFilms}) => {
         {trendingFilms &&
           trendingFilms.map(film => (
             <li key={film.id}>
-              <Link to={`/movie/${film.id}`}>
+              <Link to={`/movies/${film.id}`}>
                 {film.title ?? film.name}
               </Link>
             </li>

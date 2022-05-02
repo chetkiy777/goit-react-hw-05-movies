@@ -33,7 +33,7 @@ const MoviesPage = () => {
           findedArr.map(film => {
             return (
               <li key={film.id}>
-                <Link to={`/movie/${film.id}`}>{film.title ?? film.name}</Link>
+                <Link to={`/movies/${film.id}`}>{film.title ?? film.name}</Link>
               </li>
             );
           })}

@@ -6,30 +6,20 @@ import { Container } from './App.styled';
 import MovieDetailsPage from './pages/MovieDetailsPage';
 import Cast from './pages/Cast';
 import Reviews from './pages/Reviews';
-import { useState, useEffect } from 'react';
-import { ApiService } from './../API/apiService';
-const apiService = new ApiService();
 
-export const App = () => {
-
-  const [actors, setActors] = useState(null)
-  const [reviews, setReviews] = useState(null)
-  const [trendingFilms, setTrendingFilms] = useState(null);
-
-  useEffect(() => {
-    apiService.getTrendingFilms().then(setTrendingFilms);
-  }, []);
+export const App = () => { 
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='goit-react-hw-05-movies/'>
       <Container>
-        <AppBar />
-        <Routes> 
-          <Route index element={<HomePage trendingFilms={trendingFilms}/>} />
-          <Route path="/movies" element={<MoviesPage />} />
-          <Route path="/movie/:movieId/*" element={<MovieDetailsPage setActors={setActors} setReviews={setReviews}/>}>
-            <Route path="cast" element={<Cast actors={actors}/>} />
-            <Route path="reviews" element={<Reviews reviews={reviews}/>} />
+        <Routes>
+          <Route path="/" element={<AppBar />} >
+            <Route index element={<HomePage />} />
+            <Route path="movies" element={<MoviesPage />} />
+            <Route path="movies/:movieId/*" element={<MovieDetailsPage />} >
+              <Route path="cast" element={<Cast />}/>
+              <Route path="reviews" element={<Reviews />}/>
+            </Route>
           </Route>
         </Routes>
       </Container>

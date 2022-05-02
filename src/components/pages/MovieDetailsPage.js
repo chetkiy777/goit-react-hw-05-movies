@@ -2,26 +2,17 @@ import { useEffect, useState } from 'react';
 import { useParams, Link, Outlet } from 'react-router-dom';
 import { ApiService } from 'API/apiService';
 import { Container, MainInfoBlock, AdditionalInfoBlock, AboutFilmInfo, MovieListItem, BlockTitle } from 'components/pages/Pages.styled';
-
 const apiService = new ApiService();
 
-const MovieDetailsPage = ({setReviews, setActors}) => {
-  const [filmInfo, setFilmInfo] = useState(null);
 
+const MovieDetailsPage = () => {
+  const [filmInfo, setFilmInfo] = useState(null);
   const { movieId } = useParams();
 
   useEffect(() => {
     apiService.getFilmDetails(Number(movieId)).then(setFilmInfo);
   }, [movieId])
-
-  useEffect(() => {
-  apiService.getFilmActors(Number(movieId)).then(setActors);
-}, [movieId, setActors])
-
-  useEffect(() => {
-  apiService.getFilmReviews(Number(movieId)).then(setReviews);
-}, [movieId, setReviews])
-
+  
   return (
     <Container>
       {filmInfo && (
@@ -30,7 +21,7 @@ const MovieDetailsPage = ({setReviews, setActors}) => {
         <MainInfoBlock>
           <div>
             <img
-              src={`https://image.tmdb.org/t/p/w500/${filmInfo.poster_path}`}
+              src={`https://image.tmdb.org/t/p/w500/${filmInfo.poster_path}` }
               alt=""
             />
           </div>
