@@ -7,7 +7,7 @@ const Navigation = () => {
       <NavLink to="/" className={styles.link}>
         Главная
       </NavLink>
-      <NavLink exact="true" to="movies" className={styles.link}>
+      <NavLink to="movies" className={styles.link}>
         Фильмы
       </NavLink>
     </nav>

@@ -4,11 +4,13 @@ import { Link } from 'react-router-dom';
 const apiService = new ApiService();
 
 const MoviesPage = () => {
-  const [inputQuery, setInputQuery] = useState('');
   const [findedArr, setFindedArr] = useState(null);
 
   const handleSubmit = e => {
     e.preventDefault();
+    
+    const inputQuery = e.currentTarget.elements.searchInput.value
+
     if (inputQuery === '') {
       return;
     }
@@ -23,7 +25,6 @@ const MoviesPage = () => {
       <form onSubmit={handleSubmit}>
         <input
           name="searchInput"
-          value={inputQuery}
           onChange={e => setInputQuery(e.currentTarget.value)}
         />
         <button>Search</button>
