@@ -17,7 +17,7 @@ export class ApiService {
   }
 
   set query(newQuery) {
-    this.query = newQuery;
+    this.searchQuery = newQuery;
   }
 
   incrementPage() {

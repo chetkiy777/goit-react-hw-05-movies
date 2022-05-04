@@ -25,7 +25,6 @@ const MoviesPage = () => {
       <form onSubmit={handleSubmit}>
         <input
           name="searchInput"
-          onChange={e => setInputQuery(e.currentTarget.value)}
         />
         <button>Search</button>
       </form>
