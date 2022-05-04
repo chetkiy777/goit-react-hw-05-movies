@@ -20,13 +20,13 @@ const MoviesPage = () => {
 
   return (
     <div>
-      <form action="/" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <input
           name="searchInput"
           value={inputQuery}
           onChange={e => setInputQuery(e.currentTarget.value)}
         />
-        <button type="submit">Search</button>
+        <button>Search</button>
       </form>
       <ul>
         {findedArr &&

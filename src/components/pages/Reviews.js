@@ -15,18 +15,17 @@ const Reviews = () => {
       apiService.getFilmReviews(Number(movieId)).then(setReviews);
     }, [movieId]);
 
-  return <div>
-      {reviews ? reviews.map(review => 
-        <List>
-          <li key={review.id}>
-            <BlockTitle>author: {review.author}</BlockTitle>
-            <p>{review.content}</p>
-          </li>
-        </List>)
-      : <span> We don't have any reviews for this movie </span>
-    }
-    
-    </div>
-};
+  return <List>
+            {reviews ? reviews.map(review => 
+              
+                <li key={review.id}>
+                  <BlockTitle>author: {review.author}</BlockTitle>
+                  <p>{review.content}</p>
+                </li>
+            )
+            : <span> We don't have any reviews for this movie </span>
+          }
+         </List>
+    };
 
 export default Reviews;
