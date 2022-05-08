@@ -9,16 +9,16 @@ export class ApiService {
 
   constructor() {
     this.page = 1;
-    this.searchQuery = '';
+    // this.searchQuery = '';
   }
 
-  get query() {
-    return this.searchQuery;
-  }
+  // get query() {
+  //   return this.searchQuery;
+  // }
 
-  set query(newQuery) {
-    this.searchQuery = newQuery;
-  }
+  // set query(newQuery) {
+  //   this.searchQuery = newQuery;
+  // }
 
   incrementPage() {
     this.page += 1;
@@ -35,9 +35,9 @@ export class ApiService {
       .catch(error => console.log(error));
   }
 
-  async getFilmByName() {
+  async getFilmByName(searchQuery) {
     return await instance
-      .get(`/search/movie/?api_key=${this._apiKey}&query=${this.searchQuery}`)
+      .get(`/search/movie/?api_key=${this._apiKey}&query=${searchQuery}`)
       .then(response => response.data.results)
       .catch(error => console.log(error));
   }

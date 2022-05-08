@@ -5,6 +5,8 @@ const apiService = new ApiService();
 
 const MoviesPage = () => {
   const [findedArr, setFindedArr] = useState([]);
+
+
   const getFindedFilms = useCallback((e) => {
     const inputQuery = e.currentTarget.elements.searchInput.value
 
@@ -12,8 +14,7 @@ const MoviesPage = () => {
       return;
     }
 
-    apiService.searchQuery = inputQuery;
-    apiService.getFilmByName().then(setFindedArr)
+    apiService.getFilmByName(inputQuery).then(setFindedArr)
   },[])
   
   const handleSubmit = e => {
