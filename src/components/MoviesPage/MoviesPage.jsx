@@ -4,7 +4,7 @@ import { ApiService } from 'API/apiService';
 const apiService = new ApiService();
 
 const MoviesPage = () => {
-  const [findedArr, setFindedArr] = useState([]);
+  const [findedArr, setFindedArr] = useState(null);
 
 
   const getFindedFilms = useCallback((e) => {
