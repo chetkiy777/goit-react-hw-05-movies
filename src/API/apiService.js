@@ -37,7 +37,7 @@ export class ApiService {
 
   async getFilmByName(searchQuery) {
     return await instance
-      .get(`/search/movie/?api_key=${this._apiKey}&query=${searchQuery}&page=1&include_adult=false`)
+      .get(`/search/movie?api_key=${this._apiKey}&query=${searchQuery}&page=1&include_adult=false`)
       .then(response => response.data.results)
       .catch(error => console.log(error));
   }

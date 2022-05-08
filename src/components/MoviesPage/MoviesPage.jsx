@@ -1,8 +1,8 @@
 import { useState, useCallback} from 'react';
 import { Link } from "react-router-dom";
-import * as axios from 'axios';
-// import { ApiService } from 'API/apiService';
-// const apiService = new ApiService();
+// import * as axios from 'axios';
+import { ApiService } from 'API/apiService';
+const apiService = new ApiService();
 
 const MoviesPage = () => {
   const [findedArr, setFindedArr] = useState(null);
@@ -15,8 +15,8 @@ const MoviesPage = () => {
       return;
     }
 
-    axios.get(`https://api.themoviedb.org/3/search/movie?api_key=4a69d9470951ad07e8f0cc655bb46705&query=${inputQuery}&page=1&include_adult=false`).then(res => setFindedArr(res.data.results))
-    // apiService.getFilmByName(inputQuery).then(setFindedArr)
+    // axios.get(`https://api.themoviedb.org/3/search/movie?api_key=4a69d9470951ad07e8f0cc655bb46705&query=${inputQuery}&page=1&include_adult=false`).then(res => setFindedArr(res.data.results))
+    apiService.getFilmByName(inputQuery).then(setFindedArr)
   },[])
   
   const handleSubmit = e => {
