@@ -1,14 +1,11 @@
-import { useState } from 'react';
+import { useState, useCallback} from 'react';
+import { FindedList } from 'components/FindedList/FindedList';
 import { ApiService } from 'API/apiService';
-import { Link } from 'react-router-dom';
 const apiService = new ApiService();
 
 const MoviesPage = () => {
-  const [findedArr, setFindedArr] = useState(null);
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    
+  const [findedArr, setFindedArr] = useState([]);
+  const getFindedFilms = useCallback((e) => {
     const inputQuery = e.currentTarget.elements.searchInput.value
 
     if (inputQuery === '') {
@@ -16,28 +13,26 @@ const MoviesPage = () => {
     }
 
     apiService.searchQuery = inputQuery;
-
-    apiService.getFilmByName().then(setFindedArr);
+    apiService.getFilmByName().then(setFindedArr)
+  },[])
+  
+  const handleSubmit = e => {
+    e.preventDefault();
+    getFindedFilms(e)
   };
 
   return (
     <div>
+
       <form onSubmit={handleSubmit}>
         <input
           name="searchInput"
         />
         <button>Search</button>
       </form>
-      <ul>
-        {findedArr &&
-          findedArr.map(film => {
-            return (
-              <li key={film.id}>
-                <Link to={`/movies/${film.id}`}>{film.title ?? film.name}</Link>
-              </li>
-            );
-          })}
-      </ul>
+
+      {findedArr && <FindedList findedArray={findedArr}/>}
+
     </div>
   );
 };
